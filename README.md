@@ -1,8 +1,3 @@
-# Table of Contents
-1. [Introduction]
-2. [Abolade's Approach]
-3. [Abolade's Test]
-
 # Introduction
 
 This contibution documents and explains the approach I had taken to solve the given problem in this competition. I did not see any necessity to change the name of the source file, I made annotations in respective places I felt I need to add a line to indicate what was going through my mind when I was creating my solution.
@@ -15,7 +10,7 @@ The approach I adopted in crafting code response to this competition problem was
 * I also called ***SUM*** function on the second list collection to obtain the total costs for each drug name.
 * I created a tuple of drug_name, num_prescriber and total_costs, which I collected in a list to implement the sorting requirement for the file output.
 
-***Please see my source file for further annotation***
+***Note***: Please see my source file for further annotations.
 
 # Abolade's Test
 
@@ -43,8 +38,7 @@ Here is directory what my directory structure looked like before I started runni
                 |── output
                     └── top_cost_drug.txt 
 
-***I retained the `itcont.txt` filename in my test folder `abolade-test_1`***.
-I reused the original test script that came with the competition.
+I retained the `itcont.txt` filename in my test folder `abolade-test_1`. I reused the original test script that came with the competition.
 
 
 
