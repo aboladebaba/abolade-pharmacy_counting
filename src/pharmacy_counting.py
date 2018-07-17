@@ -16,23 +16,24 @@ def pharmacy_counting(filename, outpufile):
     outputfile : string (required)
         Text file to store the results of this processing.
         
-    Returns
-    -------
-    results.txt : file
+    Output
+    ------
+    top_cost_drug.txt : file (required)
         file containing the result of the extraction
     
     """
-    meds = {}
+    meds = {} # collection space for the drug_name, associated prescribers & costs
     with open(filename, 'r') as fh:
         reader = csv.reader(fh)
         next(reader, None) # skip the header row
         
         for row in reader:
             if len(row) == 5:
-                temp = meds.get(row[3], [[], []])
+                temp = meds.get(row[3], [[], []]) 
                 temp[0].append(row[0]) # ID
-                temp[1].append(float(row[4]))
-                meds[row[3]] = temp
+                temp[1].append(float(row[4])) # drug cost
+                meds[row[3]] = temp # add to meds
+    fh.close()
     # agg the counts
     results = []
     for key, val in meds.items():
@@ -42,10 +43,11 @@ def pharmacy_counting(filename, outpufile):
         total_cost = round(total_cost, 2)
         temp = drug_name, num_prescriber, total_cost
         results.append(temp)
-        
+ 
+    # sort the results any ties will be resolve by drug name ASCENDING 
     sorted_results = sorted(results, key=lambda elem: elem[2], reverse=True)
     
-    fh.close()
+    
     
     # write out the file
     textfile = open(outpufile, 'w')
@@ -53,6 +55,7 @@ def pharmacy_counting(filename, outpufile):
     for item in sorted_results:
         temp = item[0]+','+repr(item[1])+','+repr(item[2])+'\n'
         textfile.write(temp)
+    textfile.close()
         
 if __name__ == "__main__":
     
