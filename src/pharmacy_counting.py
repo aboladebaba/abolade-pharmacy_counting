@@ -39,6 +39,7 @@ def pharmacy_counting(filename, outpufile):
         drug_name = key
         num_prescriber = len(set(val[0]))
         total_cost = sum(val[1])
+        total_cost = round(total_cost, 2)
         temp = drug_name, num_prescriber, total_cost
         results.append(temp)
         
